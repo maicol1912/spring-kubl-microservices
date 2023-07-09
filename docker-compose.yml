@@ -1,0 +1,7 @@
+version: '3'
+services:
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: pedantic_goldwasser
+    ports:
+      - 9411:9411
