@@ -5,3 +5,9 @@ services:
     container_name: pedantic_goldwasser
     ports:
       - 9411:9411
+  redis:
+    image: redis
+    container_name: some-redis
+    restart: always
+    ports:
+      - "6379:6379"
