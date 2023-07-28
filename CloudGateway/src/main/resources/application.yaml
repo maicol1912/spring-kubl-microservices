@@ -14,6 +14,7 @@ spring:
           predicates:
             - Path=/order/**
           filters:
+            - AuthenticationFilter
             - name: CircuitBreaker
               args:
                 name: ORDER-SERVICE
@@ -27,6 +28,7 @@ spring:
           predicates:
             - Path=/payment/**
           filters:
+            - AuthenticationFilter
             - name: CircuitBreaker
               args:
                 name: PAYMENT-SERVICE
@@ -41,6 +43,7 @@ spring:
           predicates:
             - Path=/product/**
           filters:
+            - AuthenticationFilter
             - name: CircuitBreaker
               args:
                 name: PRODUCT-SERVICE
@@ -55,6 +58,7 @@ spring:
           predicates:
             - Path=/auth/**
           filters:
+            #- AuthenticationFilter
             - name: CircuitBreaker
               args:
                 name: IDENTITY-SERVICE

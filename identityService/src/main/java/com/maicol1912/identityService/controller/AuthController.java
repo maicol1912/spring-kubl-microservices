@@ -20,13 +20,14 @@ public class AuthController {
     public String addNewUser(@RequestBody UserCredentials user){
         return service.saveUser(user);
     }
-    @GetMapping("/token")
+    @PostMapping("/token")
     public String getToken(@RequestBody AuthRequest authRequest){
-
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         if(authenticate.isAuthenticated()) {
+            System.out.println("Ingrese en el primer condicional");
             return service.generateToken(authRequest.getUsername());
         }else {
+            System.out.println("Ingrese en el else");
             throw new RuntimeException("Invalid Access");
         }
     }
