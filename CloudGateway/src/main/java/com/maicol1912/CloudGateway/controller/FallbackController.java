@@ -25,4 +25,10 @@ public class FallbackController {
     public String productServiceFallback(){
         return "Product Service is down!";
     }
+
+    @GetMapping("/authServiceFallBack")
+    @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
+    public String authServiceFallback(){
+        return "Auth Service is down!";
+    }
 }
