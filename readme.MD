@@ -13,3 +13,7 @@ necesitamos a Redis como dependencias para usarlo
 # USAR LOS NUEVOS SERVICIOS
 para usar los serivicios como zipkin o redis debemos desplegar el docker con esas aplicaciones
 y correrlas en el puerto que deberian correr originalmente
+
+## SPRING SECURITY
+se usa para proteger el api gateway
+los microservicios tienen un scope interno para solo poder ser llamados desde un servicio en especifico
