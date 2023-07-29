@@ -17,3 +17,8 @@ y correrlas en el puerto que deberian correr originalmente
 ## SPRING SECURITY
 se usa para proteger el api gateway
 los microservicios tienen un scope interno para solo poder ser llamados desde un servicio en especifico
+
+## UNIT TESTING
+se usa para testear porciones de codigo
+### COVERAGE 
+aca podemos ver el cubrimiento de codigo que hace nuestro test se saca desde la calse de test y corremos run test with coverage
