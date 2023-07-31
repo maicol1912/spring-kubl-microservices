@@ -15,7 +15,11 @@ spring:
     name: PAYMENT-SERVICE
   config:
     import: configserver:${CONFIG_SERVER_URL:http://localhost:9296}
-
+  zipkin:
+    base-url: ${ZIPKIN_URL:http://localhost:9411}
+zipkin:
+  sender:
+    baseUrl:${ZIPKIN_URL:http://localhost:9411}/api/v2/spans
 management:
   tracing:
     sampling:
