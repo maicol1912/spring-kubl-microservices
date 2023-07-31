@@ -1,13 +1,151 @@
-version: '3'
+version: '3.8'
 services:
   zipkin:
     image: openzipkin/zipkin
     container_name: pedantic_goldwasser
     ports:
-      - 9411:9411
+      - "9411:9411"
+
   redis:
     image: redis
     container_name: some-redis
     restart: always
     ports:
       - "6379:6379"
+
+  serviceregistry:
+    build:
+      context: ./service-registry
+      dockerfile: Dockerfile
+    image: maicol1912/serviceregistry
+    container_name: serviceregistry
+    ports:
+      - "8761:8761"
+    restart: always
+
+  config-server:
+    build:
+      context: ./ConfigServer
+      dockerfile: Dockerfile
+    image: maicol1912/config-server
+    container_name: config-server
+    environment:
+      EUREKA_SERVER_ADDRESS: http://serviceregistry:8761/eureka/
+    ports:
+      - "9296:9296"
+    restart: always
+    depends_on:
+      - serviceregistry
+
+  cloudgateway:
+    build:
+      context: ./CloudGateway
+      dockerfile: Dockerfile
+    image: maicol1912/cloudgateway
+    container_name: cloudgateway
+    environment:
+      EUREKA_SERVER_ADDRESS: http://serviceregistry:8761/eureka/
+      CONFIG_SERVER_URL: http://config-server:9296
+    ports:
+      - "9090:9090"
+    restart: always
+    depends_on:
+      - config-server
+      - serviceregistry
+      - redis
+
+  identityservice:
+    build:
+      context: ./identityService
+      dockerfile: Dockerfile
+    image: maicol1912/identityservice
+    container_name: identityservice
+    environment:
+      EUREKA_SERVER_ADDRESS: http://serviceregistry:8761/eureka/
+      CONFIG_SERVER_URL: http://config-server:9296
+      DB_HOST: postgresdb
+      POSTGRES_PASSWORD: maicol123
+      POSTGRES_USER: maicoldev
+    ports:
+      - "8085:8085"
+    restart: always
+    depends_on:
+      - config-server
+      - serviceregistry
+
+  orderservice:
+    build:
+      context: ./OrderService
+      dockerfile: Dockerfile
+    image: maicol1912/orderservice
+    container_name: orderservice
+    environment:
+      EUREKA_SERVER_ADDRESS: http://serviceregistry:8761/eureka/
+      CONFIG_SERVER_URL: http://config-server:9296
+      DB_HOST: postgresdb
+      POSTGRES_PASSWORD: maicol123
+      POSTGRES_USER: maicoldev
+    ports:
+      - "8082:8082"
+    restart: always
+    depends_on:
+      - config-server
+      - serviceregistry
+
+  paymentservice:
+    build:
+      context: ./PaymentService
+      dockerfile: Dockerfile
+    image: maicol1912/paymentservice
+    container_name: paymentservice
+    environment:
+      EUREKA_SERVER_ADDRESS: http://serviceregistry:8761/eureka/
+      CONFIG_SERVER_URL: http://config-server:9296
+      DB_HOST: postgresdb
+      POSTGRES_PASSWORD: maicol123
+      POSTGRES_USER: maicoldev
+    ports:
+      - "8081:8081"
+    restart: always
+    depends_on:
+      - config-server
+      - serviceregistry
+
+  productservice:
+    build:
+      context: ./ProductService
+      dockerfile: Dockerfile
+    image: maicol1912/productservice
+    container_name: productservice
+    environment:
+      EUREKA_SERVER_ADDRESS: http://serviceregistry:8761/eureka/
+      CONFIG_SERVER_URL: http://config-server:9296
+      DB_HOST: postgresdb
+      POSTGRES_PASSWORD: maicol123
+      POSTGRES_USER: maicoldev
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - config-server
+      - serviceregistry
+
+  postgresdb:
+    image: postgres
+    container_name: postgresdb
+    restart: always
+    environment:
+      POSTGRES_USER: maicoldev
+      POSTGRES_PASSWORD: maicol123
+      POSTGRES_DB: postgres
+    ports:
+      - "5433:5432"
+    expose:
+      - 5433
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    command: postgres
+volumes:
+  pgdata:

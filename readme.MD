@@ -22,3 +22,9 @@ los microservicios tienen un scope interno para solo poder ser llamados desde un
 se usa para testear porciones de codigo
 ### COVERAGE 
 aca podemos ver el cubrimiento de codigo que hace nuestro test se saca desde la calse de test y corremos run test with coverage
+
+
+
+## DOCKER
+build image:  docker build -t maicol1912/serviceregistry:0.0.1 .
+run conatiner:  docker run -d -p8761:8761 --name serviceregistry f567a8b3d3a6
