@@ -2,13 +2,13 @@ version: '3.8'
 services:
   zipkin:
     image: openzipkin/zipkin
-    container_name: pedantic_goldwasser
+    container_name: zipkin
     ports:
       - "9411:9411"
 
   redis:
     image: redis
-    container_name: some-redis
+    container_name: redis
     restart: always
     ports:
       - "6379:6379"
