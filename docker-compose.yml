@@ -9,7 +9,7 @@ services:
   redis:
     image: redis
     container_name: redis
-    restart: always
+    restart: no
     ports:
       - "6379:6379"
 
@@ -21,7 +21,7 @@ services:
     container_name: serviceregistry
     ports:
       - "8761:8761"
-    restart: always
+    restart: no
 
   config-server:
     build:
@@ -33,7 +33,7 @@ services:
       EUREKA_SERVER_ADDRESS: http://serviceregistry:8761/eureka/
     ports:
       - "9296:9296"
-    restart: always
+    restart: no
     healthcheck:
       test: ["CMD","curl","-f","http://config-server:9296/actuator/health"]
       interval: 10s
@@ -55,7 +55,7 @@ services:
       REDIS_HOST: http://redis:6379
     ports:
       - "9090:9090"
-    restart: always
+    restart: no
     depends_on:
       config-server:
         condition: service_healthy
@@ -75,7 +75,7 @@ services:
       ZIPKIN_URL: http://zipkin:9411
     ports:
       - "8085:8085"
-    restart: always
+    restart: no
     depends_on:
       - config-server
       - serviceregistry
@@ -95,7 +95,7 @@ services:
       ZIPKIN_URL: http://zipkin:9411
     ports:
       - "8082:8082"
-    restart: always
+    restart: no
     depends_on:
       - config-server
       - serviceregistry
@@ -115,7 +115,7 @@ services:
       ZIPKIN_URL: http://zipkin:9411
     ports:
       - "8081:8081"
-    restart: always
+    restart: no
     depends_on:
       - config-server
       - serviceregistry
@@ -135,7 +135,7 @@ services:
       ZIPKIN_URL: http://zipkin:9411
     ports:
       - "8080:8080"
-    restart: always
+    restart: no
     depends_on:
       - config-server
       - serviceregistry
@@ -143,7 +143,7 @@ services:
   postgresdb:
     image: postgres
     container_name: postgresdb
-    restart: always
+    restart: no
     environment:
       POSTGRES_USER: maicoldev
       POSTGRES_PASSWORD: maicol123
