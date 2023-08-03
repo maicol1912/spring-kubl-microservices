@@ -34,6 +34,11 @@ services:
     ports:
       - "9296:9296"
     restart: always
+    healthcheck:
+      test: ["CMD","curl","-f","http://config-server:9296/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     depends_on:
       - serviceregistry
 
@@ -52,9 +57,8 @@ services:
       - "9090:9090"
     restart: always
     depends_on:
-      - config-server
-      - serviceregistry
-      - redis
+      config-server:
+        condition: service_healthy
 
   identityservice:
     build:
