@@ -16,4 +16,4 @@ start: minikube start
 - kubectl describe deployment nginx
 - kubectl exec -it nginx-748c667d99-5lwsg sh
 - kubectl edit deployment
-- kubectl delete deployment nginx
+
