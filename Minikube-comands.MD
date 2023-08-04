@@ -16,9 +16,4 @@ start: minikube start
 - kubectl describe deployment nginx
 - kubectl exec -it nginx-748c667d99-5lwsg sh
 - kubectl edit deployment
-- kubectl delete deployment nginx
-- kubectl apply -f .\deploy.yaml
-- kubectl apply -f .\svc.yaml
-- kubectl create namespace my-namespace
-- kubectl apply -f .\svc.yaml -n my-namespace -especificar namespace
-- kubectl get all -n my-namespace -  ontener los recursos de un namespace especifico
+
