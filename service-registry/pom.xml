@@ -32,6 +32,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.google.cloud.tools</groupId>
+			<artifactId>jib-maven-plugin</artifactId>
+			<version>3.3.2</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -61,6 +66,10 @@
 					<to>
 						<image>registry.hub.docker.com/maicol1912/serviceregistry</image>
 						<tags>latest</tags>
+						<auth>
+							<username>maicol1912</username>
+							<password>Maicol900@</password>
+						</auth>
 					</to>
 				</configuration>
 			</plugin>
