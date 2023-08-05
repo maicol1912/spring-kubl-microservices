@@ -27,11 +27,6 @@ spec:
               configMapKeyRef:
                 key: config_url
                 name: config-cm
-          - name: REDIS_HOST
-            valueFrom:
-              configMapKeyRef:
-                key: redis_url
-                name: redis-cm
 
 ---
 

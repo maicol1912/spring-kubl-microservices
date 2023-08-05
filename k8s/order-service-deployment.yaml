@@ -27,11 +27,6 @@ spec:
               configMapKeyRef:
                 key: config_url
                 name: config-cm
-          - name: ZIPKIN_URL
-            valueFrom:
-              configMapKeyRef:
-                key: zipkin_url
-                name: zipkin-cm
           - name: DB_HOST
             valueFrom:
               configMapKeyRef:
