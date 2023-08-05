@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.maicol1912</groupId>
 	<artifactId>service-registry</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>service-registry</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -68,7 +68,7 @@
 						<tags>latest</tags>
 						<auth>
 							<username>maicol1912</username>
-							<password>Maicol900@</password>
+							<password>Maicol900#</password>
 						</auth>
 					</to>
 				</configuration>
