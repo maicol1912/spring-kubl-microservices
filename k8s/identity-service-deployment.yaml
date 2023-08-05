@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: order-service-app
+  name: identity-service-app
 spec:
   selector:
     matchLabels:
-      app: order-service-app
+      app: identity-service-app
   template:
     metadata:
       labels:
-        app: order-service-app
+        app: identity-service-app
     spec:
       containers:
-      - name: order-service-app
-        image: maicol1912/orderservice
+      - name: identity-service-app
+        image: maicol1912/identityservice
         ports:
-        - containerPort: 8082
+        - containerPort: 8085
         env:
           - name: EUREKA_SERVER_ADDRESS
             valueFrom:
@@ -52,10 +52,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: order-service-svc
+  name: identity-service-svc
 spec:
   selector:
-    app: order-service-app
+    app: identity-service-app
   ports:
   - port: 80
-    targetPort: 8082
+    targetPort: 8085

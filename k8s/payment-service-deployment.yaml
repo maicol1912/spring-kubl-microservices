@@ -32,6 +32,21 @@ spec:
               configMapKeyRef:
                 key: zipkin_url
                 name: zipkin-cm
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                key: hostname
+                name: postgresql-cm
+          - name: POSTGRES_USER
+            valueFrom:
+              configMapKeyRef:
+                key: postgres_user
+                name: postgresql-cm
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                key: postgres_password
+                name: postgresql-cm
 
 ---
 apiVersion: v1

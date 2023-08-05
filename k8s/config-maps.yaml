@@ -21,3 +21,20 @@ metadata:
   name: zipkin-cm
 data:
   zipkin_url: "http://zipkin-svc"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-cm
+data:
+  redis_url: "http://redis-svc"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgresql-cm
+data:
+  hostname: "postgresql-0.postgresql"
+  postgres_user : "maicoldev"
+  postgres_password: "maicol123"

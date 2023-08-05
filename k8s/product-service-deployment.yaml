@@ -14,7 +14,7 @@ spec:
       containers:
       - name: product-service-app
         image: maicol1912/productservice
-        resources:
+        ports:
         - containerPort: 8080
         env:
           - name: EUREKA_SERVER_ADDRESS
@@ -32,6 +32,21 @@ spec:
               configMapKeyRef:
                 key: zipkin_url
                 name: zipkin-cm
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                key: hostname
+                name: postgresql-cm
+          - name: POSTGRES_USER
+            valueFrom:
+              configMapKeyRef:
+                key: postgres_user
+                name: postgresql-cm
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                key: postgres_password
+                name: postgresql-cm
 
 ---
 apiVersion: v1
@@ -44,4 +59,3 @@ spec:
   ports:
   - port: 80
     targetPort: 8080
-

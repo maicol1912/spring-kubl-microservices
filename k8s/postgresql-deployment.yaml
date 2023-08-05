@@ -94,7 +94,7 @@ kind: Service
 metadata:
   name: postgresql
 spec:
-  clusterIp: None
+  clusterIP: None
   selector:
     app: postgresql
   ports:
