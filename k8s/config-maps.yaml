@@ -13,3 +13,11 @@ metadata:
   name: config-cm
 data:
   config_url: "http://config-server-svc"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zipkin-cm
+data:
+  zipkin_url: "http://zipkin-svc"

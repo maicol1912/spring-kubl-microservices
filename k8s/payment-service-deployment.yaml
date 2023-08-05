@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rder-service-app
+  name: payment-service-app
 spec:
   selector:
     matchLabels:
-      app: order-service-app
+      app: payment-service-app
   template:
     metadata:
       labels:
-        app: order-service-app
+        app: payment-service-app
     spec:
       containers:
-      - name: order-service-app
-        image: maicol1912/orderservice
+      - name: payment-service-app
+        image: maicol1912/paymentservice
         ports:
-        - containerPort: 8082
+        - containerPort: 8081
         env:
           - name: EUREKA_SERVER_ADDRESS
             valueFrom:
@@ -37,10 +37,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: order-service-svc
+  name: payment-service-svc
 spec:
   selector:
-    app: order-service-app
+    app: payment-service-app
   ports:
   - port: 80
-    targetPort: 8082
+    targetPort: 8081
+
