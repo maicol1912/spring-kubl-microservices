@@ -2,6 +2,9 @@ server:
   port: 9090
 
 spring:
+  redis:
+      host: ${REDIS_HOST:redis}
+      port: ${REDIS_PORT:6379}
   application:
     name: API-GATEWAY
   config:
@@ -67,9 +70,6 @@ spring:
               args:
                 redis-rate-limiter.replenishRate: 1 #permite una solicitud por segundo
                 redis-rate-limiter.burstCapacity: 1 #rafagas permitidads para las peticiones
-  data:
-    redis:
-      host: ${REDIS_HOST:http://localhost:6379}
 
 
 management:
