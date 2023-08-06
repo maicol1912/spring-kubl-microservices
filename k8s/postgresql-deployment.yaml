@@ -43,7 +43,7 @@ spec:
   selector:
     matchLabels:
       app: postgresql
-  serviceName: postgresql
+  serviceName: "postgresql"
   replicas: 1
   template:
     metadata:
@@ -83,10 +83,10 @@ metadata:
   name: postgresql-initdb-cm
 data:
   init.sql: |
-    CREATE DATABASE IF NOT EXISTS identitydb;
-    CREATE DATABASE IF NOT EXISTS orderdb;
-    CREATE DATABASE IF NOT EXISTS paymentdb;
-    CREATE DATABASE IF NOT EXISTS productdb;
+    CREATE DATABASE identitydb;
+    CREATE DATABASE orderdb;
+    CREATE DATABASE paymentdb;
+    CREATE DATABASE productdb;
     
 ---
 apiVersion: v1
