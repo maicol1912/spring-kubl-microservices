@@ -1,0 +1,340 @@
+{
+	"info": {
+		"_postman_id": "279d3a5a-b7eb-4fa0-9f64-d6aec5185eee",
+		"name": "Microservices Kubl",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24860457"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Actuator",
+					"item": [
+						{
+							"name": "AppEndpoints",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/actuator"
+							},
+							"response": []
+						},
+						{
+							"name": "AppStatus",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/actuator/health"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Add Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Iphone\",\r\n    \"price\":1100,\r\n    \"quantity\":3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/product?mediaType=json",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"product"
+							],
+							"query": [
+								{
+									"key": "mediaType",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/1?mediaType=json",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"1"
+							],
+							"query": [
+								{
+									"key": "mediaType",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reduce Quantity",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/product/reduceQuantity/1?mediaType=json&quantity=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"reduceQuantity",
+								"1"
+							],
+							"query": [
+								{
+									"key": "mediaType",
+									"value": "json"
+								},
+								{
+									"key": "quantity",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Add Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\":53,\r\n    \"totalAmount\":1100,\r\n    \"quantity\":1,\r\n    \"paymentMode\":\"CASH\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/order/placeOrder?mediaType=json",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"order",
+								"placeOrder"
+							],
+							"query": [
+								{
+									"key": "mediaType",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ORDER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/order/54?mediaType=json",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"order",
+								"54"
+							],
+							"query": [
+								{
+									"key": "mediaType",
+									"value": "json"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API GATEWAY",
+			"item": [
+				{
+					"name": "Identity",
+					"item": [
+						{
+							"name": "ValidateToken",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8085/auth/validate?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYWljb2w5MCIsImlhdCI6MTY5MDUyMjA4MSwiZXhwIjoxNjkwNTIyMDgxfQ.HNjLAiotQuJRlZgS0Q9T3bF-ys2L6YKbhHn2VOTJrmQ",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"auth",
+										"validate"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYWljb2w5MCIsImlhdCI6MTY5MDUyMjA4MSwiZXhwIjoxNjkwNTIyMDgxfQ.HNjLAiotQuJRlZgS0Q9T3bF-ys2L6YKbhHn2VOTJrmQ"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Authenticate",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"maicol90\",\r\n    \"password\":\"maicol11\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "localhost:8085/auth/token"
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"maicol90\",\r\n    \"email\":\"maicol@dev.com\",\r\n    \"password\":\"maicol11\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "localhost:8085/auth/register"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Try CircuitBreaker",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Identity",
+			"item": [
+				{
+					"name": "Authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"maicol90123\",\r\n    \"password\":\"maicol111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:62349/auth/token"
+					},
+					"response": []
+				},
+				{
+					"name": "ValidateToken",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:62349/auth/validate?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYWljb2w5MDEyMyIsImlhdCI6MTY5MTM3ODUyNSwiZXhwIjoxNjkxMzgwMzI1fQ.37j39V83nHpMD0cyXLEcdXuWV4fw5BKRmgXuxEdrG5I",
+							"host": [
+								"localhost"
+							],
+							"port": "62349",
+							"path": [
+								"auth",
+								"validate"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYWljb2w5MDEyMyIsImlhdCI6MTY5MTM3ODUyNSwiZXhwIjoxNjkxMzgwMzI1fQ.37j39V83nHpMD0cyXLEcdXuWV4fw5BKRmgXuxEdrG5I"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"maicol90123\",\r\n    \"email\":\"maicol1@dev.com\",\r\n    \"password\":\"maicol111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:62349/auth/register"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
