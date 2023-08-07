@@ -15,3 +15,7 @@ spring:
     name: IDENTITY-SERVICE
   config:
     import: configserver:${CONFIG_SERVER_URL:http://localhost:9296}
+
+eureka:
+  client:
+    enabled: false
