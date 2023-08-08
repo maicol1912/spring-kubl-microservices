@@ -21,6 +21,13 @@ agregar kew/decargamos la key
 - credencials from google service: manage jenkins/ manage credentials / global / kind like
 google service account from private key / subir archivo que descargamos de claves /  en project name debemos colocar el nombre del proyecto en gcp
 / my first project/name of the project 
+- Kubernetes cluster : kubernetes cluster/ create /name / region /private cluster / crear
+- Jenkins enviroment : manage jenkins / system / variables de entonorno -allow /
+ARTIFACT-REGISTRY - nombre del artefcato de gcp - spring-microservices
+CLUSTER - nombre del cluster de gcp - microservices-cluster-1
+PROJECT_ID - nombre del proyecto en mi first project - starlit-link-395301
+REGISTRY_URL - entramos al artifact registry y entrmaos al artfacto y copiamos la ruta de arriba para dejar la region - us-west4-docker.pkg.dev
+ZONE - zona donde se esta ejecutando el artifacto - us-west4
 
 #### NOTES ABOUT THE PROCESS
 - Enable kuberenets Engine Api
