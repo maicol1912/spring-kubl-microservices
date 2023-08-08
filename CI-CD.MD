@@ -70,3 +70,47 @@ ZONE - zona donde se esta ejecutando el artifacto - us-west4
 - administrar jenkins / global tool configuration
 - path git neceistmaos agregar el path del servidor lo podemos ver en / which git
 - y descargamos automaticamente el maven
+
+### FUNCION DE DOCKERHUB EN GOOGLE CLOUD PLATFORM
+- en el artifact registry buscamos registrar todas las imagenes de nuestro docker para que estas esten privadas
+- por eso enviamos la URL IMAGE_URL alli subimos las imagenes
+- debemos tener los permisos de la app jenkins para poderlo hacer asi
+
+### KUBERNETES CLUSTER 
+- en workloads podemos ver los contenedores o los trabajos que fueron subidos desde jenkins
+- en services and ingress podemos ver todos los servicios creados 
+
+
+### Despliegue de Volumenes en GCP
+En un principio debemos definir el PersistentVolume porque en PersistenceVolumeClaim
+tenemos como manual y lo debemos definir pero como lo vamos a desplegar y vamos a trabajar con standar
+podemos borrar PersistenceVolumeClaim y definir standar en PersistentVolumeClaim
+
+#### TODOS ESTOS DETALLES SE PUEDEN VER DESDE KUBERNETES ENGINE / STORAGE
+
+              apiVersion: v1
+              kind: PersistentVolume
+              metadata:
+              name: postgresql-pw
+              spec:
+              capacity:
+              storage: 1Gi
+              accessModes:
+              - ReadWriteOnce
+              storageClassName: manual
+              hostPath:
+              path: "/run/desktop/mnt/host/c/temp/testfiles" # /mnt/data
+              type: DirectoryOrCreate
+        
+    
+              apiVersion: v1
+              kind: PersistentVolumeClaim
+              metadata:
+              name: postgresql-pvc
+              spec:
+              resources:
+              requests:
+              storage: 1Gi
+              storageClassName: standard
+              accessModes:
+              - ReadWriteOnce

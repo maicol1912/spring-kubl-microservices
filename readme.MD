@@ -104,3 +104,4 @@ Es una clave-valor asociada a un recurso de Kubernetes, como un pod o un servici
 
 #### Ingress: 
 Es un recurso de Kubernetes que administra el acceso externo a los servicios dentro del clúster. Permite la configuración de reglas de enrutamiento y balanceo de carga.
+
