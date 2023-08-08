@@ -2,7 +2,7 @@
 status: minikube status
 stop: minikube stop
 start: minikube start
-
+minikube dashboard
 
 # COMANDOS KUBECTL
 - kubectl get all: se usa para obtener informacion de todos los registros de kubernetes
@@ -23,3 +23,6 @@ start: minikube start
 - kubectl apply -f .\svc.yaml -n my-namespace -especificar namespace
 - kubectl get all -n my-namespace -  ontener los recursos de un namespace especifico
 
+- kubectl exec -it <nombre-pod> -c <nombre-contenedor> -- /bin/bash
+- kubectl logs <nombre-pod> -c <nombre-contenedor>
+- kubectl logs <nombre-pod> 

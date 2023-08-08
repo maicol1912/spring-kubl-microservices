@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import reactor.core.publisher.Mono;
 
 @SpringBootApplication
+//@EnableDiscoveryClient
 public class CloudGatewayApplication {
 
 	public static void main(String[] args) {

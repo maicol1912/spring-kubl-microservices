@@ -41,7 +41,7 @@ class OrderServiceImplTest {
     @Mock
     private RestTemplate restTemplate;
     @InjectMocks
-    OrderService orderService = new OrderServiceImpl(orderRepository,productService,paymentService,restTemplate);
+    OrderService orderService = new OrderServiceImpl();
     @DisplayName("Gert Order - Success Scenario")
     @Test
     void test_When_Order_Success(){

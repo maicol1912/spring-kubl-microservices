@@ -9,6 +9,10 @@ spring:
   config:
     import: configserver:http://localhost:9296
 
+microservices:
+  product: http://product-service-svc/product/
+  payment: http://payment-service-svc/payment/
+
 eureka:
   client:
     enabled: false
