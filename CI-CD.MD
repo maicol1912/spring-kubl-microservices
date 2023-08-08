@@ -1,27 +1,40 @@
 ### GOOGLE CLOUD PLATFORM DEPLOY 
 #### STEPS TO DEPLOY KUBERNETES ON GCP
 - Enable kubernetes Engine Api 
+
 - Artifact registry: / Create repository / Docker / Estandar / Region / claves administradas por google
+
 - Create Vm Instance: Compute Engine/Create Instance / Permitir Http
+
 - Instance created: Ssh / Open in browser window
+
 - After open console in browser windows install dependencies 
+
 - Nat Gateway: creamos un nat gateay sin configuraciones adicionales
+
 - Firewall: debemos crear reglas las cuales permitan acceder a diferentes puertos/
  Create new rule/name rule /ipv4 origen 0.0.0.0/0/protocolos esperados TCP puerto a liberar
+
 - Copiar la clave de administrador que se ve en esta ruta /var/lib/jenkins/secrets/initialAdminPassword
+
 - Generar Token de accessos en Github para pdoer acceder a recursos /settings/developer settings
 personal access tokens/ tokens/generate new token / put expiration /allow repo and admin:repo_hok
+
 - despues debemos colocar el token en jenkins / manage jenkins/ credentials / global 
 /new credentials/ usuario de github / colocamos el token en el password / id es git 
+
 - IAM: debemos crear un service account /IAM /create new service account/ creamos / despues vamos a key
 agregar kew/decargamos la key 
-- configurar plugin en jenkins: manage jenkins /  plugin / available plugins / google kubernetes engine /instalar
-- credenciales en jenkins: manage jenkins/ manage credentials / global / add credentials
+
+- configurar plugin en jenkins: manage jenkins /  plugin / available plugins / google kubernetes engine /instalar- credenciales en jenkins: manage jenkins/ manage credentials / global / add credentials
 / kind como secret file / id gcp
+
 - credencials from google service: manage jenkins/ manage credentials / global / kind like
 google service account from private key / subir archivo que descargamos de claves /  en project name debemos colocar el nombre del proyecto en gcp
 / my first project/name of the project 
+
 - Kubernetes cluster : kubernetes cluster/ create /name / region /private cluster / crear
+
 - Jenkins enviroment : manage jenkins / system / variables de entonorno -allow /
 ARTIFACT-REGISTRY - nombre del artefcato de gcp - spring-microservices
 CLUSTER - nombre del cluster de gcp - microservices-cluster-1
