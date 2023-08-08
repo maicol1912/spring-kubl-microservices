@@ -1,0 +1,10 @@
+node{
+    stage('Checkout'){
+
+    }
+    stage('Build and Push Image'){
+
+    }
+    stage('Deploy'){
+    }
+}

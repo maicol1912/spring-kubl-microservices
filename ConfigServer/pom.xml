@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.maicol1912</groupId>
 	<artifactId>ConfigServer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>ConfigServer</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -31,6 +31,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.google.cloud.tools</groupId>
+			<artifactId>jib-maven-plugin</artifactId>
+			<version>3.3.0</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -49,6 +54,25 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<from>
+						<image>openjdk:17</image>
+					</from>
+					<to>
+						<image>registry.hub.docker.com/maicol1912/config-server</image>
+						<tags>latest</tags>
+
+						<auth>
+							<username>maicol1912</username>
+							<password>Maicol900#</password>
+						</auth>
+					</to>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
