@@ -70,4 +70,3 @@ ZONE - zona donde se esta ejecutando el artifacto - us-west4
 - administrar jenkins / global tool configuration
 - path git neceistmaos agregar el path del servidor lo podemos ver en / which git
 - y descargamos automaticamente el maven
-- 

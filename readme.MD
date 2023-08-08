@@ -23,7 +23,33 @@ se usa para testear porciones de codigo
 ### COVERAGE 
 aca podemos ver el cubrimiento de codigo que hace nuestro test se saca desde la calse de test y corremos run test with coverage
 
-
+## Plugin JIB para hacer deploy en docker hub al compilar
+debemos definir la dependencia y el plugin y debemos configurar
+- config.json  - C:\Users\User\.docker\config.json y debe quedar asi
+                            
+                            {
+                              "auths": {
+                              "https://index.docker.io/v1/": {}
+                              }
+                              }
+                            <plugin>
+                            <groupId>com.google.cloud.tools</groupId>
+                            <artifactId>jib-maven-plugin</artifactId>
+                            <version>3.3.0</version>
+                            <configuration>
+                            <from>
+                            <image>openjdk:17</image>
+                            </from>
+                            <to>
+                            <image>registry.hub.docker.com/maicol1912/identityservice</image>
+                            <tags>latest</tags>
+                            <auth>
+                            <username>maicol</username>
+                            <password>Maico</password>
+                            </auth>
+                            </to>
+                            </configuration>
+                            </plugin>
 
 ## DOCKER
 build image:  docker build -t maicol1912/serviceregistry:0.0.1 .
