@@ -10,3 +10,16 @@ spring:
         git:
           uri: https://github.com/maicol1912/spring-kubl-config
           clone-on-start: true
+
+
+#server:
+  #port: 9296
+
+#spring:
+  #profiles:
+    #active: native
+  #cloud:
+    #config:
+      #server:
+        #native:
+          #search-locations: file:./CONFIG-SERVER.yml
