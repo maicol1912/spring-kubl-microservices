@@ -146,3 +146,4 @@ stage('Quality gate'){
 debemos agregar estos 3 stages
 
 
+y despues de esto estamos listos para hacer el quality test y podemos ver el historia y las ejecuciones en el server de sonar
