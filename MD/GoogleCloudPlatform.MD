@@ -14,7 +14,11 @@ Alli es donde se crean diferentes clusters donde corren nuestros pods y kubernet
 ### VIRTUAL MACHINE
 son maquinas virtuales que nos sirven para almacenar aplicaciones
 - Usamos la maquina virtual praa correr Jenkins en el puerto 8080
+- Usamos la maquina virtual praa correr sonar en el puerto 9000
 
 ### IAM
 es el servicio de autenticacion donde podemos crear politicas de seguridad para nuestros proyectos
 
+
+### FIREWALL
+es el servicio que usamos para crera reglas de seguiridad como apertura de puertos y otras reglas
